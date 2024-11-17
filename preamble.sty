@@ -1,0 +1,202 @@
+% Document Formatting
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{xcolor}
+
+\usepackage{multicol} % page column formatting
+
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
+citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Optional Formatting
+
+% if using indentations, do \usepackage[useIndent]{preamble}
+% if using headers, do \usepackage[useHeader]{preamble}
+
+\newif\ifnoIndent
+\newif\ifuseHeader
+\DeclareOption{useHeader}{\useHeadertrue}
+\DeclareOption{noHeader}{\useHeaderfalse}
+\DeclareOption{noIndent}{\noIndenttrue}
+\DeclareOption{useIndent}{\noIndentfalse}
+
+\ExecuteOptions{noIndent}
+\ProcessOptions\relax
+\ifnoIndent
+    \usepackage{parskip}
+\fi
+
+\ExecuteOptions{noHeader}
+\ifuseHeader
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \setlength{\headheight}{15pt}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Miscellaneous Utility
+
+\usepackage{tikz} % drawing
+\usepackage{pgfplots} % plotting
+\pgfplotsset{compat=1.18}
+
+\usepackage{wrapfig} % image formatting
+
+\usepackage{listings} % code formatting, https://www.overleaf.com/learn/latex/Code_listing
+
+\usepackage{enumitem} % list formatting
+
+\newcommand{\code}[1]{\texttt{#1}} % inline code snippet
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Math Formatting
+
+\usepackage{amsmath}
+
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr \let\mathscr\relax % not sure what this does tbh
+\usepackage[scr]{rsfso}
+
+\usepackage{amsthm}
+
+\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Theorem Enviornments
+
+\newtheorem{prob}{Problem} % new problem
+\numberwithin{prob}{subsection}
+\newtheorem*{sol}{Solution}
+\newtheorem{ex}{Example}
+\numberwithin{ex}{subsection}
+
+\theoremstyle{definition} % new definition
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{subsection}
+
+\newtheorem{thm}{Theorem} % new theorem
+\numberwithin{thm}{subsection}
+
+\newtheorem{prop}{Proposition} % new proposition
+\numberwithin{prop}{subsection}
+
+\newtheorem{cor}{Corollary} % new corollary
+\numberwithin{cor}{subsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Statistical Distributions
+
+\newcommand{\plainfont}[1]{\textnormal{{#1}}}
+
+\newcommand{\Bern}{\plainfont{Bern}} % Bernoulli
+\newcommand{\Bin}{\plainfont{Bin}} % Binomial
+\newcommand{\Pois}{\plainfont{Pois}} % Poisson
+\newcommand{\Geom}{\plainfont{Geom}} % Geometric
+\newcommand{\FS}{\plainfont{FS}} % First Success
+\newcommand{\HGeom}{\plainfont{HGeom}} % Hypergeometric
+\newcommand{\NBin}{\plainfont{NBin}} % Negative Binomial
+\newcommand{\Beta}{\plainfont{Beta}} % Beta
+\newcommand{\Gam}{\plainfont{Gamma}} % Gamma
+\newcommand{\N}{\mathcal{N}} % Normal
+\newcommand{\LogN}{\log\mathcal{N}} % Log Normal
+\newcommand{\Expo}{\plainfont{Expo}} % Exponential
+\newcommand{\Unif}{\plainfont{Unif}} % Uniform
+\newcommand{\DUnif}{\plainfont{DUnif}} % Discrete Uniform
+\newcommand{\Ind}{\mathbb{I}} % Indicator
+\newcommand{\LP}{\plainfont{Laplace}} % Laplace
+\newcommand{\W}{\mathcal{W}} % Wishart
+\newcommand{\Rad}{\plainfont{Rademacher}} % Rademacher
+\newcommand{\chisq}{\chi^2} % Chi squared
+\newcommand{\studentt}{\plainfont{t}} % Student t
+\newcommand{\F}{\plainfont{F}} % F
+\newcommand{\Logistic}{\plainfont{Logistic}} % Logistic
+\newcommand{\Pareto}{\plainfont{Pareto}} % Pareto
+\newcommand{\Triangle}{\plainfont{Tri}} % Triangle
+\newcommand{\Weibull}{\plainfont{Weibull}} % Weibull
+\newcommand{\Gumbel}{\plainfont{Gumbel}} % Gumbel
+\newcommand{\Cauchy}{\plainfont{Cauchy}} % Cauchy
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Statistical Metrics
+
+\DeclareMathOperator{\E}{\mathbb{E}} % expectation
+\DeclareMathOperator{\Var}{Var} % variance
+\DeclareMathOperator{\Cov}{Cov} % covariance
+\DeclareMathOperator{\Corr}{Corr} % correlation
+\DeclareMathOperator{\SD}{SD} % standard deviation
+\DeclareMathOperator{\Bias}{Bias} % bias
+\DeclareMathOperator{\SE}{SE} % standard error
+\DeclareMathOperator{\RSS}{RSS} % residual sum of squares
+\DeclareMathOperator{\MSE}{MSE} % mean squared error
+\DeclareMathOperator{\RMSE}{RMSE} % root mean squared error
+\DeclareMathOperator{\pval}{p-value} % p value
+\newcommand{\MLE}[1]{\hat{{#1}}_\plainfont{MLE}} % maximum likelihood estimator
+\DeclareMathOperator{\FisherI}{\mathcal{I}} % Fisher informatino
+\DeclareMathOperator{\loss}{\mathscr{L}} % loss function
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Statistical Relations
+
+\newcommand{\iid}{\overset{iid}{\sim}} % iid
+\newcommand{\appdis}{\overset{\cdot}{\sim}} % approx distributed
+\newcommand{\eqdis}{\overset{d}{=}} % equal in distribution
+
+\newcommand{\conv}[1]{\overset{{#1}\to\infty}{\longrightarrow}} % converges as {#1} to infinity
+\newcommand{\convd}{\overset{d}{\longrightarrow}} % converges in distribution
+\newcommand{\convp}{\overset{p}{\longrightarrow}} % converges in probability
+\newcommand{\convas}{\overset{a.s.}{\longrightarrow}} % converges almost surely
+
+\newcommand{\iseq}{\overset{?}{=}} % might be equal in distribution
+
+\newcommand{\indep}{\perp \!\!\! \perp} % independence
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Math Symbols
+
+\newcommand{\Nat}{\mathbb{N}} % naturals
+\newcommand{\Z}{\mathbb{Z}} % integers
+\newcommand{\Q}{\mathbb{Q}} % rationals
+\newcommand{\R}{\mathbb{R}} % reals
+\newcommand{\C}{\mathbb{C}} % complexes
+
+\newcommand{\linspace}{\mathcal{L}} % linear space
+\newcommand{\rowspace}{\mathcal{L}_{\plainfont{row}}} % row space
+\newcommand{\colspace}{\mathcal{L}_{\plainfont{col}}} % column space
+
+\DeclareMathOperator{\J}{\mathcal{J}} % Jacobian
+\newcommand{\proj}[2]{\text{proj}_{#1}(#2)} % projection
+
+\newcommand{\1}{\vec{1}} % ones vector
+\newcommand{\I}{\mathbf{I}} % identity matrix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Math Functions 
+
+\newcommand{\inner}[2]{\langle #1, #2 \rangle} % inner product
+\newcommand{\norm}[1]{\lVert#1\rVert} % norm
+\DeclareMathOperator{\tr}{tr} % matrix trace
+\DeclareMathOperator{\rank}{rank} % matrix rank
+\DeclareMathOperator{\vectorize}{vec} % matrix vectorization
+\DeclareMathOperator{\sign}{sign} % sign
+\DeclareMathOperator{\diag}{diag} % diagonal
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Math Formatting
+
+\newcommand{\V}[1]{\vec{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+\newcommand{\us}[2]{\underset{#1}{#2}}
+\newcommand{\os}[2]{\overset{#1}{#2}}
