@@ -81,17 +81,16 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 \theoremstyle{definition} % change environment format, italicized text
 
-\newtheorem{defn}{Definition} % new definition
-\numberwithin{defn}{subsection}
+\newtheorem{counter}{__environment_counter_variable} % used as a counter
+\numberwithin{counter}{subsection}
 
-\newtheorem{thm}{Theorem} % new theorem
-\numberwithin{thm}{subsection}
+\newtheorem{defn}[counter]{Definition} % new definition
 
-\newtheorem{prop}{Proposition} % new proposition
-\numberwithin{prop}{subsection}
+\newtheorem{thm}[counter]{Theorem} % new theorem
 
-\newtheorem{cor}{Corollary} % new corollary
-\numberwithin{cor}{subsection}
+\newtheorem{prop}[counter]{Proposition} % new proposition
+
+\newtheorem{cor}[counter]{Corollary} % new corollary
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
