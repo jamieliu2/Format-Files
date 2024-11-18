@@ -76,15 +76,14 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 \newtheorem*{sol}{Solution} % solution (not numbered)
 
-\newtheorem{ex}{Example} % new example
-\numberwithin{ex}{subsection}
-
-\theoremstyle{definition} % change environment format, italicized text
-
-\newtheorem{counter}{__environment_counter_variable} % used as a counter
+\newtheorem{counter}{__environment_counter} % used as a counter for theorem environments
 \numberwithin{counter}{subsection}
 
+\newtheorem{ex}[counter]{Example} % new example
+
 \newtheorem{defn}[counter]{Definition} % new definition
+
+\theoremstyle{definition} % change environment format, italicized text
 
 \newtheorem{thm}[counter]{Theorem} % new theorem
 
