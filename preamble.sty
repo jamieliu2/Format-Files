@@ -71,13 +71,12 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 % Theorem Enviornments
 
-\newtheorem{prob}{Problem} % new problem
-\numberwithin{prob}{subsection}
+\newtheorem{counter}{\_\_environment\_counter} % used as a counter for theorem environments
+\numberwithin{counter}{subsection}
+
+\newtheorem{prob}[counter]{Problem} % new problem
 
 \newtheorem*{sol}{Solution} % solution (not numbered)
-
-\newtheorem{counter}{__environment_counter} % used as a counter for theorem environments
-\numberwithin{counter}{subsection}
 
 \newtheorem{ex}[counter]{Example} % new example
 
