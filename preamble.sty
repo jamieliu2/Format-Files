@@ -15,26 +15,60 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 % if using indentations, do \usepackage[useIndent]{preamble}
 % if using headers, do \usepackage[useHeader]{preamble}
+% if force-overriding previously defined commands, do \usepackage[Override]{preamble}
+% if not including specific theorem environments, do \usepackage[noEnvs]{preamble}
 
 \newif\ifnoIndent
-\newif\ifuseHeader
-\DeclareOption{useHeader}{\useHeadertrue}
-\DeclareOption{noHeader}{\useHeaderfalse}
 \DeclareOption{noIndent}{\noIndenttrue}
 \DeclareOption{useIndent}{\noIndentfalse}
 
+\newif\ifuseHeader
+\DeclareOption{useHeader}{\useHeadertrue}
+\DeclareOption{noHeader}{\useHeaderfalse}
+
+\newif\ifnoOverride
+\DeclareOption{noOverride}{\noOverridetrue}
+\DeclareOption{Override}{\noOverridefalse}
+
+\newif\ifuseEnvs
+\DeclareOption{useEnvs}{\useEnvstrue}
+\DeclareOption{noEnvs}{\useEnvsfalse}
+
+% default options
 \ExecuteOptions{noIndent}
-\ProcessOptions\relax
+\ExecuteOptions{noHeader}
+\ExecuteOptions{noOverride}
+\ExecuteOptions{useEnvs}
+
+% process user settings
+\ProcessOptions
+
+% control paragraph spacing/indenting
 \ifnoIndent
     \usepackage{parskip}
 \fi
 
-\ExecuteOptions{noHeader}
+% control document header
 \ifuseHeader
     \usepackage{fancyhdr}
     \pagestyle{fancy}
     \setlength{\headheight}{15pt}
 \fi
+
+% control package import behavior
+\ifnoOverride
+    \newcommand{\definecommand}[3]{\providecommand{#1}[#2]{#3}}
+\else
+    \newcommand{\definecommand}[3]{
+    \ifdefined#1
+        \renewcommand{#1}[#2]{#3}
+    \else
+        \newcommand{#1}[#2]{#3}
+    \fi
+    }
+\fi
+
+% theorem definition behavior controlled in Theorem Environments section
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -49,11 +83,11 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 \usepackage{listings} % code formatting, https://www.overleaf.com/learn/latex/Code_listing
 
 \usepackage[shortlabels]{enumitem} % list formatting
-% adjust labels using \begin{enumerate}[a)]
+% adjust labels using \begin{enumerate}{a)}
 
-\newcommand{\code}[1]{\texttt{#1}} % inline code snippet
+\definecommand{\code}{1}{\texttt{#1}} % inline code snippet
 
-\newcommand{\ans}[1]{\color{blue} #1 \color{black}} % blue-colored answer
+\definecommand{\ans}{1}{\color{blue} #1 \color{black}} % blue-colored answer
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -76,132 +110,179 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 \newtheorem{counter}{\_\_environment\_counter} % used as a counter for theorem environments
 \numberwithin{counter}{subsection}
 
-\newtheorem{prob}[counter]{Problem} % new problem
+% general purpose environments, use \begin{env_name}{Header Text}
 
-\newtheorem*{sol}{Solution} % solution (not numbered)
+\newcommand{\innerheader}{}
 
-\newtheorem{ex}[counter]{Example} % new example
+% plain style, env_name = penv, penvn for non-numbered
 
-\newtheorem{defn}[counter]{Definition} % new definition
+\theoremstyle{plain}
+\newtheorem{plain_env}[counter]{\innerheader}
+\newtheorem*{plain_nonum}{\innerheader}
 
-\theoremstyle{definition} % change environment format, italicized text
+\newenvironment{penv}[1]
+    {\renewcommand\innerheader{#1}\begin{plain_env}}
+    {\end{plain_env}}
 
-\newtheorem{thm}[counter]{Theorem} % new theorem
+\newenvironment{penvn}[1]
+    {\renewcommand\innerheader{#1}\begin{plain_nonum}}
+    {\end{plain_nonum}}
 
-\newtheorem{prop}[counter]{Proposition} % new proposition
+% definition style, env_name = denv, denvn for non-numbered
 
-\newtheorem{cor}[counter]{Corollary} % new corollary
+\theoremstyle{definition}
+\newtheorem{def_env}[counter]{\innerheader}
+\newtheorem*{def_nonum}{\innerheader}
+
+\newenvironment{denv}[1]
+    {\renewcommand\innerheader{#1}\begin{def_env}}
+    {\end{def_env}}
+\newenvironment{denvn}[1]
+    {\renewcommand\innerheader{#1}\begin{def_nonum}}
+    {\end{def_nonum}}
+
+% remark style, env_name = renv, renvn for non-numbered
+    
+\theoremstyle{remark}
+\newtheorem{rem_env}[counter]{\innerheader}
+\newtheorem*{rem_nonum}{\innerheader}
+
+\newenvironment{renv}[1]
+    {\renewcommand\innerheader{#1}\begin{rem_env}}
+    {\end{rem_env}}
+\newenvironment{renvn}[1]
+    {\renewcommand\innerheader{#1}\begin{rem_nonum}}
+    {\end{rem_nonum}}
+
+
+% specific theorem environments, does not play well with overriding
+
+\ifuseEnvs
+    \theoremstyle{plain} % change environment format, italicized text
+    \newtheorem{thm}[counter]{Theorem} % new theorem
+    \newtheorem{prop}[counter]{Proposition} % new proposition
+    \newtheorem{cor}[counter]{Corollary} % new corollary
+    
+    \theoremstyle{definition} % change environment format, roman text
+    \newtheorem{prob}[counter]{Problem} % new problem
+    \newtheorem*{sol}{Solution} % solution (not numbered)
+    \newtheorem{ex}[counter]{Example} % new example
+    \newtheorem{defn}[counter]{Definition} % new definition
+    
+    \theoremstyle{remark} % change environment format, non=bold title
+    \newtheorem*{rem}{Remark}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Statistical Distributions
 
-\newcommand{\plainfont}[1]{\textnormal{{#1}}}
+\definecommand{\plainfont}{1}{\textnormal{{#1}}}
 
-\newcommand{\Bern}{\plainfont{Bern}} % Bernoulli
-\newcommand{\Bin}{\plainfont{Bin}} % Binomial
-\newcommand{\Pois}{\plainfont{Pois}} % Poisson
-\newcommand{\Geom}{\plainfont{Geom}} % Geometric
-\newcommand{\FS}{\plainfont{FS}} % First Success
-\newcommand{\HGeom}{\plainfont{HGeom}} % Hypergeometric
-\newcommand{\NBin}{\plainfont{NBin}} % Negative Binomial
-\newcommand{\Beta}{\plainfont{Beta}} % Beta
-\newcommand{\Gam}{\plainfont{Gamma}} % Gamma
-\newcommand{\N}{\mathcal{N}} % Normal
-\newcommand{\LogN}{\log\mathcal{N}} % Log Normal
-\newcommand{\Expo}{\plainfont{Expo}} % Exponential
-\newcommand{\Unif}{\plainfont{Unif}} % Uniform
-\newcommand{\DUnif}{\plainfont{DUnif}} % Discrete Uniform
-\newcommand{\Ind}{\mathbb{I}} % Indicator
-\newcommand{\LP}{\plainfont{Laplace}} % Laplace
-\newcommand{\W}{\mathcal{W}} % Wishart
-\newcommand{\Rad}{\plainfont{Rademacher}} % Rademacher
-\newcommand{\chisq}{\chi^2} % Chi squared
-\newcommand{\studentt}{\plainfont{t}} % Student t
-\newcommand{\F}{\plainfont{F}} % F
-\newcommand{\Logistic}{\plainfont{Logistic}} % Logistic
-\newcommand{\Pareto}{\plainfont{Pareto}} % Pareto
-\newcommand{\Triangle}{\plainfont{Tri}} % Triangle
-\newcommand{\Weibull}{\plainfont{Weibull}} % Weibull
-\newcommand{\Gumbel}{\plainfont{Gumbel}} % Gumbel
-\newcommand{\Cauchy}{\plainfont{Cauchy}} % Cauchy
+\definecommand{\Bern}{0}{\plainfont{Bern}} % Bernoulli
+\definecommand{\Bin}{0}{\plainfont{Bin}} % Binomial
+\definecommand{\Pois}{0}{\plainfont{Pois}} % Poisson
+\definecommand{\Geom}{0}{\plainfont{Geom}} % Geometric
+\definecommand{\FS}{0}{\plainfont{FS}} % First Success
+\definecommand{\HGeom}{0}{\plainfont{HGeom}} % Hypergeometric
+\definecommand{\NBin}{0}{\plainfont{NBin}} % Negative Binomial
+\definecommand{\Beta}{0}{\plainfont{Beta}} % Beta
+\definecommand{\Gam}{0}{\plainfont{Gamma}} % Gamma
+\definecommand{\N}{0}{\mathcal{N}} % Normal
+\definecommand{\LogN}{0}{\log\mathcal{N}} % Log Normal
+\definecommand{\Expo}{0}{\plainfont{Expo}} % Exponential
+\definecommand{\Unif}{0}{\plainfont{Unif}} % Uniform
+\definecommand{\DUnif}{0}{\plainfont{DUnif}} % Discrete Uniform
+\definecommand{\Ind}{0}{\mathbb{I}} % Indicator
+\definecommand{\LP}{0}{\plainfont{Laplace}} % Laplace
+\definecommand{\W}{0}{\mathcal{W}} % Wishart
+\definecommand{\Rad}{0}{\plainfont{Rademacher}} % Rademacher
+\definecommand{\chisq}{0}{\chi^2} % Chi squared
+\definecommand{\studentt}{0}{\plainfont{t}} % Student t
+\definecommand{\F}{0}{\plainfont{F}} % F
+\definecommand{\Logistic}{0}{\plainfont{Logistic}} % Logistic
+\definecommand{\Pareto}{0}{\plainfont{Pareto}} % Pareto
+\definecommand{\Triangle}{0}{\plainfont{Tri}} % Triangle
+\definecommand{\Weibull}{0}{\plainfont{Weibull}} % Weibull
+\definecommand{\Gumbel}{0}{\plainfont{Gumbel}} % Gumbel
+\definecommand{\Cauchy}{0}{\plainfont{Cauchy}} % Cauchy
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Statistical Metrics
 
-\DeclareMathOperator{\E}{\mathbb{E}} % expectation
-\DeclareMathOperator{\Var}{Var} % variance
-\DeclareMathOperator{\Cov}{Cov} % covariance
-\DeclareMathOperator{\Corr}{Corr} % correlation
-\DeclareMathOperator{\SD}{SD} % standard deviation
-\DeclareMathOperator{\Bias}{Bias} % bias
-\DeclareMathOperator{\SE}{SE} % standard error
-\DeclareMathOperator{\RSS}{RSS} % residual sum of squares
-\DeclareMathOperator{\MSE}{MSE} % mean squared error
-\DeclareMathOperator{\RMSE}{RMSE} % root mean squared error
-\DeclareMathOperator{\pval}{p-value} % p value
-\newcommand{\MLE}[1]{\hat{{#1}}_\plainfont{MLE}} % maximum likelihood estimator
-\DeclareMathOperator{\FisherI}{\mathcal{I}} % Fisher informatino
-\DeclareMathOperator{\loss}{\mathscr{L}} % loss function
+\definecommand{\E}{0}{\mathbb{E} \,} % expectation
+\definecommand{\Var}{0}{\plainfont{Var} \,} % variance
+\definecommand{\Cov}{0}{\plainfont{Cov} \,} % covariance
+\definecommand{\Corr}{0}{\plainfont{Corr} \,} % correlation
+\definecommand{\SD}{0}{\plainfont{SD} \,} % standard deviation
+\definecommand{\Bias}{0}{\plainfont{Bias} \,} % bias
+\definecommand{\SE}{0}{\plainfont{SE} \,} % standard error
+\definecommand{\RSS}{0}{\plainfont{RSS} \,} % residual sum of squares
+\definecommand{\MSE}{0}{\plainfont{MSE} \,} % mean squared error
+\definecommand{\RMSE}{0}{\plainfont{RMSE} \,} % root mean squared error
+\definecommand{\pval}{0}{\plainfont{p-value}} % p value
+\definecommand{\MLE}{1}{\hat{{#1}}_\plainfont{MLE}} % maximum likelihood estimator
+\definecommand{\FisherI}{0}{\mathcal{I} \,} % Fisher informatino
+\definecommand{\loss}{0}{\mathscr{L} \,} % loss function
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Statistical Relations
 
-\newcommand{\iid}{\overset{iid}{\sim}} % iid
-\newcommand{\appdis}{\; \dot\sim \;} % approx distributed
-\newcommand{\eqdis}{\overset{d}{=}} % equal in distribution
+\definecommand{\iid}{0}{\overset{iid}{\sim}} % iid
+\definecommand{\appdis}{0}{\; \dot\sim \;} % approx distributed
+\definecommand{\eqdis}{0}{\overset{d}{=}} % equal in distribution
 
-\newcommand{\conv}[1]{\overset{{#1}\to\infty}{\longrightarrow}} % converges as {#1} to infinity
-\newcommand{\convd}{\overset{D}{\longrightarrow}} % converges in distribution
-\newcommand{\convp}{\overset{P}{\longrightarrow}} % converges in probability
-\newcommand{\convas}{\overset{a.s.}{\longrightarrow}} % converges almost surely
+\definecommand{\conv}{1}{\overset{{#1}\to\infty}{\longrightarrow}} % converges as {#1} to infinity
+\definecommand{\convd}{0}{\overset{D}{\longrightarrow}} % converges in distribution
+\definecommand{\convp}{0}{\overset{P}{\longrightarrow}} % converges in probability
+\definecommand{\convas}{0}{\overset{a.s.}{\longrightarrow}} % converges almost surely
 
-\newcommand{\iseq}{\overset{?}{=}} % might be equal in distribution
+\definecommand{\iseq}{0}{\overset{?}{=}} % might be equal in distribution
 
-\newcommand{\indep}{\perp \!\!\! \perp} % independence
+\definecommand{\indep}{0}{\perp \!\!\! \perp} % independence
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Math Symbols
 
-\newcommand{\Nat}{\mathbb{N}} % naturals
-\newcommand{\Z}{\mathbb{Z}} % integers
-\newcommand{\Q}{\mathbb{Q}} % rationals
-\newcommand{\R}{\mathbb{R}} % reals
-\newcommand{\C}{\mathbb{C}} % complexes
+\definecommand{\Nat}{0}{\mathbb{N}} % naturals
+\definecommand{\Z}{0}{\mathbb{Z}} % integers
+\definecommand{\Q}{0}{\mathbb{Q}} % rationals
+\definecommand{\R}{0}{\mathbb{R}} % reals
+\definecommand{\C}{0}{\mathbb{C}} % complexes
 
-\newcommand{\linspace}{\mathcal{L}} % linear space
-\newcommand{\rowspace}{\mathcal{L}_{\plainfont{row}}} % row space
-\newcommand{\colspace}{\mathcal{L}_{\plainfont{col}}} % column space
+\definecommand{\linspace}{0}{\mathcal{L} \,} % linear space
+\definecommand{\rowspace}{0}{\mathcal{L}_{\plainfont{row}} \,} % row space
+\definecommand{\colspace}{0}{\mathcal{L}_{\plainfont{col}} \,} % column space
 
-\DeclareMathOperator{\J}{\mathcal{J}} % Jacobian
-\newcommand{\proj}[2]{\text{proj}_{#1}(#2)} % projection
+\definecommand{\J}{0}{\mathcal{J} \,} % Jacobian
+\definecommand{\proj}{2}{\text{proj}_{#1}(#2) \,} % projection
 
-\newcommand{\1}{\vec{1}} % ones vector
-\newcommand{\I}{\mathbf{I}} % identity matrix
+\definecommand{\1}{0}{\vec{1}} % ones vector
+\definecommand{\I}{0}{\mathbf{I}} % identity matrix
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Math Functions 
 
-\newcommand{\e}[1]{e^{#1}}
-\newcommand{\inner}[2]{\langle #1, #2 \rangle} % inner product
-\newcommand{\norm}[1]{\lVert#1\rVert} % norm
-\DeclareMathOperator{\tr}{tr} % matrix trace
-\DeclareMathOperator{\rank}{rank} % matrix rank
-\DeclareMathOperator{\vectorize}{vec} % matrix vectorization
-\DeclareMathOperator{\sign}{sign} % sign
-\DeclareMathOperator{\diag}{diag} % diagonal
-\newcommand{\limn}{\lim_{n \to \infty}} % limit as n goes to infinity
+\definecommand{\e}{1}{e^{#1}}
+\definecommand{\inner}{2}{\langle #1, #2 \rangle} % inner product
+\definecommand{\norm}{1}{\lVert#1\rVert} % norm
+\definecommand{\tr}{0}{\plainfont{tr} \,} % matrix trace
+\definecommand{\rank}{0}{\plainfont{rank} \,} % matrix rank
+\definecommand{\vectorize}{0}{\plainfont{vec} \,} % matrix vectorization
+\definecommand{\sign}{0}{\plainfont{sign} \,} % sign
+\definecommand{\diag}{0}{\plainfont{diag} \,} % diagonal
+\definecommand{\limn}{0}{\lim_{n \to \infty}} % limit as n goes to infinity
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Math Formatting
 
-\newcommand{\V}[1]{\vec{#1}}
-\newcommand{\mat}[1]{\mathbf{#1}}
+\definecommand{\V}{1}{\vec{#1}}
+\definecommand{\mat}{1}{\mathbf{#1}}
 
-\newcommand{\us}[2]{\underset{#1}{#2}}
-\newcommand{\os}[2]{\overset{#1}{#2}}
+\definecommand{\us}{2}{\underset{#1}{#2}}
+\definecommand{\os}{2}{\overset{#1}{#2}}
