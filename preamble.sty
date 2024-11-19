@@ -112,46 +112,46 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 % general purpose environments, use \begin{env_name}{Header Text}
 
-\newcommand{\innerheader}{}
+\newcommand{\innerheader142857}{}
 
 % plain style, env_name = penv, penvn for non-numbered
 
 \theoremstyle{plain}
-\newtheorem{plain_env}[counter]{\innerheader}
-\newtheorem*{plain_nonum}{\innerheader}
+\newtheorem{plain_env}[counter]{\innerheader142857}
+\newtheorem*{plain_nonum}{\innerheader142857}
 
 \newenvironment{penv}[1]
-    {\renewcommand\innerheader{#1}\begin{plain_env}}
+    {\renewcommand\innerheader142857{#1}\begin{plain_env}}
     {\end{plain_env}}
 
 \newenvironment{penvn}[1]
-    {\renewcommand\innerheader{#1}\begin{plain_nonum}}
+    {\renewcommand\innerheader142857{#1}\begin{plain_nonum}}
     {\end{plain_nonum}}
 
 % definition style, env_name = denv, denvn for non-numbered
 
 \theoremstyle{definition}
-\newtheorem{def_env}[counter]{\innerheader}
-\newtheorem*{def_nonum}{\innerheader}
+\newtheorem{def_env}[counter]{\innerheader142857}
+\newtheorem*{def_nonum}{\innerheader142857}
 
 \newenvironment{denv}[1]
-    {\renewcommand\innerheader{#1}\begin{def_env}}
+    {\renewcommand\innerheader142857{#1}\begin{def_env}}
     {\end{def_env}}
 \newenvironment{denvn}[1]
-    {\renewcommand\innerheader{#1}\begin{def_nonum}}
+    {\renewcommand\innerheader142857{#1}\begin{def_nonum}}
     {\end{def_nonum}}
 
 % remark style, env_name = renv, renvn for non-numbered
     
 \theoremstyle{remark}
-\newtheorem{rem_env}[counter]{\innerheader}
-\newtheorem*{rem_nonum}{\innerheader}
+\newtheorem{rem_env}[counter]{\innerheader142857}
+\newtheorem*{rem_nonum}{\innerheader142857}
 
 \newenvironment{renv}[1]
-    {\renewcommand\innerheader{#1}\begin{rem_env}}
+    {\renewcommand\innerheader142857{#1}\begin{rem_env}}
     {\end{rem_env}}
 \newenvironment{renvn}[1]
-    {\renewcommand\innerheader{#1}\begin{rem_nonum}}
+    {\renewcommand\innerheader142857{#1}\begin{rem_nonum}}
     {\end{rem_nonum}}
 
 
