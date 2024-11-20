@@ -283,10 +283,10 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 \definecommand{\limn}{0}{\lim_{n \to \infty}} % limit as n goes to infinity
 \definecommand{\lowerboundvar}{0}{}
 \definecommand{\upperboundvar}{0}{}
-\definecommand{\setboundvars}{2}{
-    \renewcommand{\lowerboundvar}{#1} \renewcommand{\upperboundvar}{#2} } % set bounds
-\definecommand{\summat}{1}{\sum_{#1 = \lowerboundvar}^{\upperboundvar}} % sum of #1 = lb to ub
-\definecommand{\integ}{0}{\int_{\lowerboundvar}^{\upperboundvar}} % integral from lb to ub
+\definecommand{\setboundvars}{2}{ % set bounds, use this for changing bounds of sum/int
+    \renewcommand{\lowerboundvar}{#1} \renewcommand{\upperboundvar}{#2} }
+\definecommand{\summat}{2}{\sum_{#1 = \lowerboundvar}^{\upperboundvar} #2} % sum of #1 = lb to ub
+\definecommand{\integ}{2}{\int_{\lowerboundvar}^{\upperboundvar} #1 \, d#2} % integral from lb to ub
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
