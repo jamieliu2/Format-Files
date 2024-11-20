@@ -18,6 +18,8 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 % if force-overriding previously defined commands, do \usepackage[Override]{preamble}
 % if not including specific theorem environments, do \usepackage[noEnvs]{preamble}
 
+% Defaults: noIndent, noHeader, noOverride, useEnvs
+
 \newif\ifnoIndent
 \DeclareOption{noIndent}{\noIndenttrue}
 \DeclareOption{useIndent}{\noIndentfalse}
@@ -111,6 +113,10 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 \numberwithin{counter}{subsection}
 
 % general purpose environments, use \begin{env_name}{Header Text}
+% plain style (bold header, italic text) : penv
+% definition style (bold header, plain text) : denv
+% remark style (italic header, plain text) : renv
+% add '*' to the end of the env_name for a non-numbered enviornment
 
 \newcommand{\envinnerheader}{}
 
@@ -275,6 +281,12 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 \definecommand{\sign}{0}{\plainfont{sign} \,} % sign
 \definecommand{\diag}{0}{\plainfont{diag} \,} % diagonal
 \definecommand{\limn}{0}{\lim_{n \to \infty}} % limit as n goes to infinity
+\definecommand{\lowerboundvar}{0}{}
+\definecommand{\upperboundvar}{0}{}
+\definecommand{\setboundvars}{2}{
+    \renewcommand{\lowerboundvar}{#1} \renewcommand{\upperboundvar}{#2} } % set bounds
+\definecommand{\summat}{1}{\sum_{#1 = \lowerboundvar}^{\upperboundvar}} % sum of #1 = lb to ub
+\definecommand{\integ}{0}{\int_{\lowerboundvar}^{\upperboundvar}} % integral from lb to ub
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
