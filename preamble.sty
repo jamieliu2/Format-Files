@@ -263,7 +263,7 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 \definecommand{\colspace}{0}{\mathcal{L}_{\plainfont{col}} \,} % column space
 
 \definecommand{\J}{0}{\mathcal{J} \,} % Jacobian
-\definecommand{\proj}{2}{\text{proj}_{#1}(#2) \,} % projection
+\definecommand{\proj}{2}{\text{proj}_{#1}\, \left(#2\right)} % projection
 
 \definecommand{\1}{0}{\vec{1}} % ones vector
 \definecommand{\I}{0}{\mathbf{I}} % identity matrix
@@ -273,7 +273,8 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 % Math Functions 
 
 \definecommand{\e}{1}{e^{#1}}
-\definecommand{\nroot}{2}{\sqrt[\leftroot{-2}\uproot{2}#1]{#2}}
+\definecommand{\nroot}{2}{\sqrt[\leftroot{-2}\uproot{2}#1]{#2}} % nth root
+\definecommand{\abs}{1}{\left| \, #1 \, \right|} % absolute value
 \definecommand{\inner}{2}{\langle #1, #2 \rangle} % inner product
 \definecommand{\norm}{1}{\lVert#1\rVert} % norm
 \definecommand{\tr}{0}{\plainfont{tr} \,} % matrix trace
