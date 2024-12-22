@@ -93,6 +93,8 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 \definecommand{\ans}{1}{\color{blue} #1 \color{black}} % blue-colored answer
 
+\definecommand{\noin}{0}{\noindent}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Math Formatting
@@ -166,18 +168,18 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 \ifuseEnvs
     \theoremstyle{plain} % change environment format, italicized text
-    \newtheorem{thm}[counter]{Theorem} % new theorem
-    \newtheorem{prop}[counter]{Proposition} % new proposition
-    \newtheorem{cor}[counter]{Corollary} % new corollary
+    \newtheorem{theorem}[counter]{Theorem} % new theorem
+    \newtheorem{proposition}[counter]{Proposition} % new proposition
+    \newtheorem{corollary}[counter]{Corollary} % new corollary
     
     \theoremstyle{definition} % change environment format, roman text
-    \newtheorem{prob}[counter]{Problem} % new problem
-    \newtheorem*{sol}{Solution} % solution (not numbered)
-    \newtheorem{ex}[counter]{Example} % new example
-    \newtheorem{defn}[counter]{Definition} % new definition
+    \newtheorem{problem}[counter]{Problem} % new problem
+    \newtheorem*{solution}{Solution} % solution (not numbered)
+    \newtheorem{example}[counter]{Example} % new example
+    \newtheorem{definition}[counter]{Definition} % new definition
     
     \theoremstyle{remark} % change environment format, non=bold title
-    \newtheorem*{rem}{Remark}
+    \newtheorem*{remark}{Remark}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
