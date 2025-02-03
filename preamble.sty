@@ -1,29 +1,12 @@
-% Document Formatting
-
-\usepackage[margin=1in]{geometry}
-
-\usepackage[dvipsnames, svgnames, x11names]{xcolor} % colored text w/ additional colors
-% https://www.overleaf.com/learn/latex/Using_colors_in_LaTeX
-
-\usepackage{multicol} % page column formatting
-
-\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
-citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
-
-\usepackage{pdfpages} % include pdfs
-
-\usepackage{marvosym} % special symbols, particularly \biohazard
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % Optional Formatting
 
 % if using indentations, do \usepackage[useIndent]{preamble}
 % if using headers, do \usepackage[useHeader]{preamble}
 % if force-overriding previously defined commands, do \usepackage[Override]{preamble}
 % if not including specific theorem environments, do \usepackage[noEnvs]{preamble}
+% if loading extra xcolor colors, do \usepackage[extraColors]{preamble}
 
-% Defaults: noIndent, noHeader, noOverride, useEnvs
+% Defaults: noIndent, noHeader, noOverride, useEnvs, baseColors
 
 \newif\ifnoIndent
 \DeclareOption{noIndent}{\noIndenttrue}
@@ -36,6 +19,10 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 \newif\ifnoOverride
 \DeclareOption{noOverride}{\noOverridetrue}
 \DeclareOption{Override}{\noOverridefalse}
+
+\newif\ifextraColors
+\DeclareOption{extraColors}{\extraColorstrue}
+\DeclareOption{baseColors}{\extraColorsfalse}
 
 \newif\ifuseEnvs
 \DeclareOption{useEnvs}{\useEnvstrue}
@@ -75,7 +62,28 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
     }
 \fi
 
+\ifextraColors
+    \usepackage[dvipsnames, svgnames, x11names]{xcolor}
+\else
+    \usepackage{xcolor}
+\fi
+
 % theorem definition behavior controlled in Theorem Environments section
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Document Formatting
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{multicol} % page column formatting
+
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
+citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
+
+\usepackage{pdfpages} % include pdfs
+
+\usepackage{marvosym} % special symbols, particularly \biohazard
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
