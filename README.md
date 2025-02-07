@@ -5,7 +5,8 @@
 General purpose LaTeX style with macros primarily oriented toward math and statistics, in addition to some other helpful utilities.
 
 ### Usage:
-In the .tex file header, use: `\usepackage[*options*]{preamble}`.
+In the .tex file header, use:
+> \usepackage[*options*]{preamble}`
 
 ### Options:
   * Indenting (via parskip package):
@@ -33,13 +34,14 @@ In the .tex file header, use: `\usepackage[*options*]{preamble}`.
 A theme for pandoc compilation that intends to mimic the default Python syntax highlighting in Jupyter Notebook.
 
 ### Usage:
-In the command line, use`pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme`.
-- See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `highlight-languages` is necessary.
+In the command line, use
+> pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme
+See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `highlight-languages` is necessary.
 
 In RMarkdown header, use:
-  * `output:`
-    * `[file type]:`
-      * `highlight: jupyter.theme`
+> output
+>> [file type]:
+>>> highlight: jupyter.theme
 
 ### Known Issues:
   * The formatting settings are not polished an may be missing some functionality.
