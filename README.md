@@ -40,7 +40,7 @@ In the command line, use
 See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `--highlight-languages=python` is necessary.
 
 In RMarkdown header, use:
-> <pre>output</pre>
+> <pre>output:</pre>
 >> <pre>[<i>file type</i>]:</pre>
 >>> <pre>highlight: jupyter.theme</pre>
 
