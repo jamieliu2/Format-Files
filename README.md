@@ -35,13 +35,13 @@ A theme for pandoc compilation that intends to mimic the default Python syntax h
 
 ### Usage:
 In the command line, use
-> pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme
+> `pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme`
 See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `highlight-languages` is necessary.
 
 In RMarkdown header, use:
-> output
->> [file type]:
->>> highlight: jupyter.theme
+> `output`
+>> `[file type]:`
+>>> `highlight: jupyter.theme`
 
 ### Known Issues:
   * The formatting settings are not polished an may be missing some functionality.
