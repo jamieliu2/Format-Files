@@ -26,7 +26,7 @@ In the .tex file header, use:
     * `extraColors`
 
 ### Known Issues:
-  * Using [extraColors] seems to cause an option clash error due to code coloring in .Rtex files.
+  * Using option `[extraColors]` seems to cause an option clash error in .Rtex files due to code coloring.
 
 
 ## jupyter.theme
@@ -36,7 +36,7 @@ A theme for pandoc compilation that intends to mimic the default Python syntax h
 ### Usage:
 In the command line, use
 > `pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-styles=jupyter.theme`
-> 
+
 See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `--highlight-languages=python` is necessary.
 
 In RMarkdown header, use:
