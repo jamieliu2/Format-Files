@@ -9,8 +9,8 @@ In the .tex file header, use: `\usepackage[*options*]{preamble}`.
 
 ### Options:
 Indenting (via parskip package): \
-    * `noIndent` (default) \
-    * `useIndent` \
+  * `noIndent` (default) \
+  * `useIndent` \
 Document Header (via fancyhdr package): \
     - `noHeader` (default) \
     - `useHeader` \
