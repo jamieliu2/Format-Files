@@ -33,11 +33,11 @@ In the .tex file header, use: `\usepackage[*options*]{preamble}`.
 A theme for pandoc compilation that intends to mimic the default Python syntax highlighting in Jupyter Notebook.
 
 ### Usage:
-In the command line, use`pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme`. \
+In the command line, use`pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme`.
 - See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `highlight-languages` is necessary.
 
-In RMarkdown header, use: \
-    `output:` \
+In RMarkdown header, use:
+  - `output:` \
     \t     `[file type]:` \
     \t\t        `highlight: jupyter.theme`
 
