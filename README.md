@@ -6,7 +6,7 @@ General purpose LaTeX style with macros primarily oriented toward math and stati
 
 ### Usage:
 In the .tex file header, use:
-> `\usepackage[`*options*`]{preamble}`
+> <pre>\usepackage[<i>options</i>]{preamble}</pre>
 
 ### Options:
   * Indenting (via parskip package):
