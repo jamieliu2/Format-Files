@@ -8,9 +8,9 @@ General purpose LaTeX style with macros primarily oriented toward math and stati
 In the .tex file header, use: `\usepackage[*options*]{preamble}`.
 
 ### Options:
-Indenting (via parskip package): \
-  * `noIndent` (default) \
-  * `useIndent` \
+Indenting (via parskip package):
+  * `noIndent` (default)
+  * `useIndent`
 Document Header (via fancyhdr package): \
     - `noHeader` (default) \
     - `useHeader` \
