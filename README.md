@@ -8,21 +8,21 @@ General purpose LaTeX style with macros primarily oriented toward math and stati
 In the .tex file header, use: `\usepackage[*options*]{preamble}`.
 
 ### Options:
-Indenting (via parskip package):
-  * `noIndent` (default)
-  * `useIndent`
+  * Indenting (via parskip package):
+    * `noIndent` (default)
+    * `useIndent`
 
-Document Header (via fancyhdr package):
-  * `noHeader` (default)
-  * `useHeader`
+  * Document Header (via fancyhdr package):
+    * `noHeader` (default)
+    * `useHeader`
 
-Override Existing Command Definitions:
-  * `noOverride` (default)
-  * `Override`
+  * Override Existing Command Definitions:
+    * `noOverride` (default)
+    * `Override`
 
-Extra Colors fo xcolor (dvipsnames, svgnames, x11names):
-  * `baseColors` (default)
-  * `extraColors`
+  * Extra Colors fo xcolor (dvipsnames, svgnames, x11names):
+    * `baseColors` (default)
+    * `extraColors`
 
 ### Known Issues:
   * Using [extraColors] seems to cause an option clash error due to code coloring in .Rtex files.
