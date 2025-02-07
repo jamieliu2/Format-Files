@@ -37,11 +37,11 @@ In the command line, use`pandoc -f [original file type] -t [new file type] [file
 - See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `highlight-languages` is necessary.
 
 In RMarkdown header, use:
-  - `output:` \
-    \t     `[file type]:` \
-    \t\t        `highlight: jupyter.theme`
+  * `output:`
+    * `[file type]:`
+      * `highlight: jupyter.theme`
 
 ### Known Issues:
-- The formatting settings are not polished an may be missing some functionality. \
-- pandoc does not seem to correctly tokenize methods or attributes, giving them the same coloring as plaintext. \
-- Non-Python languages may be highlighted oddly due to differing tokenizing conventions and lack of careful style definitions for non-Python tokens.
+  * The formatting settings are not polished an may be missing some functionality.
+  * pandoc does not seem to correctly tokenize methods or attributes, giving them the same coloring as plaintext.
+  * Non-Python languages may be highlighted oddly due to differing tokenizing conventions and lack of careful style definitions for non-Python tokens.
