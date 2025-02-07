@@ -46,5 +46,5 @@ In RMarkdown header, use:
 
 ### Known Issues:
   * The formatting settings are not polished an may be missing some functionalities.
-  * pandoc does not seem to correctly tokenize methods or attributes, giving them the same coloring as plaintext.
+  * pandoc does not seem to correctly tokenize Python methods and attributes, giving them the same coloring as plaintext.
   * Non-Python languages may be highlighted oddly due to differing tokenizing conventions and lack of careful style definitions for non-Python tokens.
