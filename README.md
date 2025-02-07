@@ -8,18 +8,18 @@ General purpose LaTeX style with macros primarily oriented toward math and stati
 In the .tex file header, use: `\usepackage[*options*]{preamble}`.
 
 ### Options:
-Indenting (via parskip package):
-    - noIndent (default)
-    - useIndent
-Document Header (via fancyhdr package):
-    - noHeader (default)
-    - useHeader
-Override Existing Command Definitions:
-    - noOverride (default)
-    - Override
-Extra Colors fo xcolor (dvipsnames, svgnames, x11names):
-    - baseColors (default)
-    - extraColors
+Indenting (via parskip package): \
+    - noIndent (default) \
+    - useIndent \
+Document Header (via fancyhdr package): \
+    - noHeader (default) \
+    - useHeader \
+Override Existing Command Definitions: \
+    - noOverride (default) \
+    - Override \
+Extra Colors fo xcolor (dvipsnames, svgnames, x11names): \
+    - baseColors (default) \
+    - extraColors \
 
 ### Known Issues:
  - Using [extraColors] seems to cause an option clash error due to code coloring in .Rtex files.
@@ -30,15 +30,15 @@ Extra Colors fo xcolor (dvipsnames, svgnames, x11names):
 A theme for pandoc compilation that intends to mimic the default Python syntax highlighting in Jupyter Notebook.
 
 ### Usage:
-In the command line, use`pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme`.
+In the command line, use`pandoc -f [original file type] -t [new file type] [file name] -o [output file] --highlight-languages=python --highlight-styles=jupyter.theme`. \
 - See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `highlight-languages` is necessary.
 
-In RMarkdown header, use:
-    `output:`
-        `[file type]:`
-            `highlight: jupyter.theme`
+In RMarkdown header, use: \
+    `output:` \
+    \t     `[file type]:` \
+    \t\t        `highlight: jupyter.theme` \
 
 ### Known Issues:
-- The formatting settings are not polished an may be missing some functionality.
-- pandoc does not seem to correctly tokenize methods or attributes, giving them the same coloring as plaintext.
-- Non-Python languages may be highlighted oddly due to differing tokenizing conventions and lack of careful style definitions for non-Python tokens.
+- The formatting settings are not polished an may be missing some functionality. \
+- pandoc does not seem to correctly tokenize methods or attributes, giving them the same coloring as plaintext. \
+- Non-Python languages may be highlighted oddly due to differing tokenizing conventions and lack of careful style definitions for non-Python tokens. \
