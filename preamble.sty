@@ -85,6 +85,26 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 \usepackage{marvosym} % special symbols, particularly \biohazard
 
+% generate a title box
+\definecommand{\titlebox}{4}{
+    \pagestyle{myheadings}
+    \thispagestyle{plain}
+    \newpage
+    \noindent
+    \begin{center}
+        \framebox{
+            \vbox{\vspace{2mm}
+            \hbox to 6.25in { {\bf #1 \hfill #2} }
+            \vspace{4mm}
+            \hbox to 6.25in { {\Large \hfill #3 \hfill} }
+            \vspace{2mm}
+            \hbox to 6.25in { {\it #4 \hfill Due: #5} }
+            \vspace{2mm}}
+        }
+    \end{center}
+    \markboth{Homework #1: #2}{Homework #1: #2}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Miscellaneous Utility
