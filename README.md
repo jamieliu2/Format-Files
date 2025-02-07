@@ -41,7 +41,7 @@ See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `--h
 
 In RMarkdown header, use:
 > <pre> output </pre>
->> <pre> [_file type_]: </pre>
+>> <pre> [<i> file type </i>]: </pre>
 >>> <pre> highlight: jupyter.theme </pre>
 
 ### Known Issues:
