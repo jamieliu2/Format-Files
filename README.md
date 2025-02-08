@@ -26,7 +26,7 @@ In the .tex file header, use:
     * `extraColors`
 
 ### Known Issues:
-  * Using option `[extraColors]` seems to cause an option clash error in .Rtex files due to code coloring.
+  * Using option `[extraColors]` seems to cause an option clash warning in .Rtex files due to code coloring.
 
 
 ## jupyter.theme
