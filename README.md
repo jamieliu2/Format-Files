@@ -41,7 +41,7 @@ A theme for pandoc compilation that intends to mimic the default Python syntax h
 In the command line, use
 > <pre>pandoc -f [<i>original file type</i>] -t [<i>new file type</i>] [<i>file name</i>] -o [<i>output file</i>] --highlight-styles=jupyter.theme</pre>
 
-See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `--highlight-languages=python` is necessary.
+See pandoc.org/MANUAL.html for more details. Note that it's unclear whether `--highlight-languages=python` is also necessary.
 
 In RMarkdown header, use:
 > <pre>output:</pre>
