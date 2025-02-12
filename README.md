@@ -21,9 +21,13 @@ In the .tex file header, use:
     * `noOverride` (default)
     * `Override`
 
-  * Extra Colors fo xcolor (dvipsnames, svgnames, x11names):
+  * Extra Colors for xcolor (dvipsnames, svgnames, x11names):
     * `baseColors` (default)
     * `extraColors`
+
+  * Pre-defined environments; theorem, proposition, corollary, problem, solution, example, definition, biohazard, remark:
+    * `useEnvs` (default)
+    * `noEnvs`
 
 ### Known Issues:
   * Using option `[extraColors]` seems to cause an option clash warning in .Rtex files due to code coloring.
