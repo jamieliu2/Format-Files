@@ -120,6 +120,47 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 \definecommand{\code}{1}{\texttt{#1}} % inline code snippet
 
+% full python code block, use \begin{codeblock}{python}
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, breakable, xparse, skins}
+\definecolor{bg}{gray}{0.95}
+\definecolor{crimson}{rgb}{0.86, 0.08, 0.24}
+\newcommand{\codeborderthickness}{1pt}
+\DeclareTCBListing{codeblock}{O{}m!O{}}{%
+  breakable=true,
+  listing engine=minted,
+  listing only,
+  minted language=#2,
+  minted style=default,
+  minted options={%
+    % linenos,
+    gobble=0,
+    breaklines=true,
+    breakafter=,,
+    fontsize=\small,
+    numbersep=12pt,
+    #1},
+  boxsep=0pt,
+  left skip=0pt,
+  right skip=0pt,
+  left=27pt-\codeborderthickness,
+  right=0pt,
+  top=3pt,
+  bottom=3pt,
+  arc=5pt,
+  leftrule=\codeborderthickness,
+  rightrule=\codeborderthickness,
+  bottomrule=\codeborderthickness,
+  toprule=\codeborderthickness,
+  colback=bg,
+  colframe=crimson,
+  enhanced,
+  overlay={%
+    \begin{tcbclipinterior}
+    \fill[black!15] (frame.south west) rectangle ([xshift=20pt]frame.north west);
+    \end{tcbclipinterior}},
+  #3}
+
 \definecommand{\ans}{1}{\color{blue} #1 \color{black}} % blue-colored answer
 
 \definecommand{\noin}{0}{\noindent} % no indent
