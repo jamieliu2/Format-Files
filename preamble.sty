@@ -249,22 +249,34 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 
 % specific theorem environments, does not play well with overriding
-
 \ifuseEnvs
     \theoremstyle{plain} % change environment format, italicized text
+    
     \newtheorem{theorem}[counter]{Theorem} % new theorem
+    \newtheorem*{theorem*}{Theorem} % new unnumbered theorem
     \newtheorem{proposition}[counter]{Proposition} % new proposition
+    \newtheorem*{proposition*}{Proposition} % new unnumbered proposition
     \newtheorem{lemma}[counter]{Lemma} % new lemma
+    \newtheorem*{lemma*}{Lemma} % new unnumbered lemma
     \newtheorem{corollary}[counter]{Corollary} % new corollary
+    \newtheorem*{corollary*}{Corollary} % new unnumbered corollary
     
     \theoremstyle{definition} % change environment format, roman text
+    
     \newtheorem{problem}[counter]{Problem} % new problem
-    \newtheorem*{solution}{Solution} % solution (not numbered)
+    \newtheorem*{problem*}{Problem} % new unnumbered problem
+    \newtheorem{solution}[counter]{Solution} % solution
+    \newtheorem*{solution*}{Solution} % unnumbered solution
     \newtheorem{example}[counter]{Example} % new example
+    \newtheorem*{example*}{Example} % new unnumbered example
     \newtheorem{definition}[counter]{Definition} % new definition
+    \newtheorem*{definition*}{Definition} % new unnumbered definition
     \newtheorem{biohazard}[counter]{\Biohazard} % biohazard
+    \newtheorem*{biohazard*}{\Biohazard} % unnumbered biohazard
     
     \theoremstyle{remark} % change environment format, non=bold title
+
+    \newtheorem{nremark}[counter]{Remark}
     \newtheorem*{remark}{Remark}
 \fi
 
