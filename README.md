@@ -32,6 +32,16 @@ In the .tex file header, use:
 ### Known Issues:
   * Using option `[extraColors]` seems to cause an option clash warning in .Rtex files due to code coloring.
 
+## pltstyle.py
+
+A Python script to set up my style configuration for Matplotlib.
+
+### Usage:
+In a Jupyter Notebook, use the line magic `%run pltstyle.py`, which will import Matplotlib and configure the style.
+> Use style `seaborn-v0_8`
+> Use font `monospace`
+> Set default plot linewidth to `0.5`
+> Set default plot markersize to `3`
 
 ## jupyter.theme
 
