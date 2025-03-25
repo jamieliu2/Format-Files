@@ -38,10 +38,10 @@ A Python script to set up my style configuration for Matplotlib.
 
 ### Usage:
 In a Jupyter Notebook, use the line magic `%run pltstyle.py`, which will import Matplotlib and configure the style.
-> Use style `seaborn-v0_8`
-> Use font `monospace`
-> Set default plot linewidth to `0.5`
-> Set default plot markersize to `3`
+* Use style `seaborn-v0_8`
+* Use font `monospace`
+* Set default plot linewidth to `0.5`
+* Set default plot markersize to `3`
 
 ## jupyter.theme
 
