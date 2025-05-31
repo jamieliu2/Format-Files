@@ -1,5 +1,7 @@
 # A Repository for Formatting Files by Jamie Liu
 
+
+
 ## preamble.sty
 
 General purpose LaTeX style with macros primarily oriented toward math and statistics, in addition to some other helpful utilities.
@@ -32,6 +34,8 @@ In the .tex file header, use:
 ### Known Issues:
   * Using option `[extraColors]` seems to cause an option clash warning in .Rtex files due to code coloring.
 
+
+
 ## pltstyle.py
 
 A Python script to set up my style configuration for Matplotlib.
@@ -42,6 +46,8 @@ In a Jupyter Notebook, use the line magic `%run pltstyle.py`, which will import 
 * Use font `monospace`
 * Set default plot linewidth to `0.5`
 * Set default plot markersize to `3`
+
+
 
 ## jupyter.theme
 
@@ -62,3 +68,9 @@ In RMarkdown header, use:
   * The formatting settings are not polished an may be missing some functionalities.
   * pandoc does not seem to correctly tokenize Python methods and attributes, giving them the same coloring as plaintext.
   * Non-Python languages may be highlighted oddly due to differing tokenization conventions and lack of careful style definitions for non-Python tokens.
+
+
+
+## AIDA64
+
+This folder contains various format files for AIDA64 Extreme. In particular, `.sensorpanel` files for the AIDA64 Extreme SensorPanel.
