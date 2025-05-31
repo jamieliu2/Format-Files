@@ -1,4 +1,4 @@
-# A Repository for Formatting Styles by Jamie Liu
+# A Repository for Formatting Files by Jamie Liu
 
 ## preamble.sty
 
