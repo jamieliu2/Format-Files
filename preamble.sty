@@ -74,8 +74,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Document Formatting
+\makeatletter
+\@ifpackageloaded{geometry}{}
+    {\usepackage[margin=1in]{geometry}}
+\makeatother
 
-\usepackage[margin=1in]{geometry}
 
 \usepackage{multicol} % page column formatting
 
