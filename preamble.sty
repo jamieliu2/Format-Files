@@ -1,3 +1,11 @@
+% Document Formatting
+\makeatletter
+\@ifpackageloaded{geometry}{}
+    {\usepackage[margin=1in]{geometry}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Optional Formatting
 
 % if using indentations, do \usepackage[useIndent]{preamble}
@@ -72,13 +80,6 @@
 % theorem definition behavior controlled in Theorem Environments section
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Document Formatting
-\makeatletter
-\@ifpackageloaded{geometry}{}
-    {\usepackage[margin=1in]{geometry}}
-\makeatother
-
 
 \usepackage{multicol} % page column formatting
 
