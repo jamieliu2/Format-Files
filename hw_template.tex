@@ -1,10 +1,21 @@
 \documentclass{article}
 \usepackage[useHeader]{preamble}
 
-\lhead{[author]}
-\chead{Homework [hw number/title]}
-\rhead{[class name]}
+%%%%%%%%%% TO FILL %%%%%%%%%%
+\def\docAuthor{author}
+\def\docTitle{title}
+\def\docClass{class}
+\def\docTerm{term/semester}
+\def\docDate{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lhead{\docAuthor}
+\chead{\docTitle}
+\rhead{\docClass}
 
 \begin{document}
+\thispagestyle{empty} % no header on title page
+\titlebox{\docClass}{\docTerm}{\docTitle}{\docAuthor}{\docDate}
 
 \end{document}
+
