@@ -1,0 +1,30 @@
+---
+output:
+  pdf_document:
+    latex_engine: pdflatex
+header-includes:
+  # assumes preamble.sty is in parent folder
+  - \usepackage[useHeader]{../preamble}
+  
+  - \def\docAuthor{author}
+  - \def\docTitle{title}
+  - \def\docClass{class}
+  - \def\docTerm{term/semester}
+  - \def\docDate{\today}
+  
+  - \lhead{\docAuthor}
+  - \chead{\docTitle}
+  - \rhead{\docClass}
+  
+  # nice (?) math font that fixed \neq
+  - \usepackage{newtxmath}
+  
+  # may be able to fix python errors by
+  ## 1. downgrading to python=3.10
+  ## 2. downgrading to matplotlib=3.8
+  ## 3. downgrading to libtiff=4.5.1
+  ## 4. downgrading to pillow=10.0.0
+---
+
+\thispagestyle{empty} <!-- no header on title page -->
+\titlebox{\docClass}{\docTerm}{\docTitle}{\docAuthor}{\docDate}
