@@ -26,10 +26,12 @@ header-includes:
   ## 4. downgrading to pillow=10.0.0
 ---
 
-\thispagestyle{empty} <!-- no header on title page -->
-\titlebox{\docClass}{\docTerm}{\docTitle}{\docAuthor}{\docDate}
-
-```{r}
+```{r SETUP_CHUNK, include=FALSE}
 require(reticulate)
 require(zeallot)
 ```
+
+\thispagestyle{empty} <!-- no header on title page -->
+\titlebox{\docClass}{\docTerm}{\docTitle}{\docAuthor}{\docDate}
+
+<!-- End of Template -->
