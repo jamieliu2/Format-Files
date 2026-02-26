@@ -29,6 +29,7 @@ header-includes:
 ```{r SETUP_CHUNK, include=FALSE}
 require(reticulate)
 require(zeallot)
+require(scales)
 ```
 
 \thispagestyle{empty} <!-- no header on title page -->
