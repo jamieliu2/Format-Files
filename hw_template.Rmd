@@ -4,7 +4,7 @@ output:
     latex_engine: pdflatex
 header-includes:
   # assumes preamble.sty is in parent folder
-  - \usepackage[useHeader]{../preamble}
+  - \usepackage[useHeader, Override]{../preamble}
   
   - \def\docAuthor{author}
   - \def\docTitle{title}
