@@ -59,20 +59,19 @@
 \fi
 
 % control package import behavior
-\alwaysoverride{3}{
-    \ifdefined#1
-        \renewcommand{#1}[#2]{#3}
-    \else
-        \newcommand{#1}[#2]{#3}
-    \fi
-    }
+
+\makeatletter
+\newcommand{\alwaysoverride}[3]{%
+    \@ifundefined{\expandafter\@gobble\string#1}
+        {\newcommand{#1}[#2]{#3}}%
+        {\renewcommand{#1}[#2]{#3}}%
 }
-    
+\makeatother
 
 \ifnoOverride
     \newcommand{\definecommand}[3]{\providecommand{#1}[#2]{#3}}
 \else
-    \newcommand{\definecommand}[3]{\alwaysoverride{#1}[#2]{#3}}
+    \newcommand{\definecommand}[3]{\alwaysoverride{#1}{#2}{#3}}
 \fi
 
 \ifextraColors
