@@ -59,16 +59,20 @@
 \fi
 
 % control package import behavior
-\ifnoOverride
-    \newcommand{\definecommand}[3]{\providecommand{#1}[#2]{#3}}
-\else
-    \newcommand{\definecommand}[3]{
+\alwaysoverride{3}{
     \ifdefined#1
         \renewcommand{#1}[#2]{#3}
     \else
         \newcommand{#1}[#2]{#3}
     \fi
     }
+}
+    
+
+\ifnoOverride
+    \newcommand{\definecommand}[3]{\providecommand{#1}[#2]{#3}}
+\else
+    \newcommand{\definecommand}[3]{\alwaysoverride{#1}[#2]{#3}}
 \fi
 
 \ifextraColors
@@ -354,8 +358,8 @@ citecolor=blue, urlcolor=blue]{hyperref} % hyperlinks
 
 % Statistical Metrics
 
-\definecommand{\P}{0}{\mathbb{P}} % probability
-\definecommand{\E}{0}{\mathbb{E}} % expectation
+\alwaysoverride{\P}{0}{\mathbb{P}} % probability
+\alwaysoverride{\E}{0}{\mathbb{E}} % expectation
 \definecommand{\Var}{0}{\plainfont{Var}} % variance
 \definecommand{\Cov}{0}{\plainfont{Cov}} % covariance
 \definecommand{\Corr}{0}{\plainfont{Corr}} % correlation
