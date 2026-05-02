@@ -65,7 +65,7 @@ In RMarkdown header, use:
 >>> <pre>highlight: jupyter.theme</pre>
 
 ### Known Issues:
-  * The formatting settings are not polished an may be missing some functionalities.
+  * The formatting settings are not polished and may be missing some functionalities.
   * pandoc does not seem to correctly tokenize Python methods and attributes, giving them the same coloring as plaintext.
   * Non-Python languages may be highlighted oddly due to differing tokenization conventions and lack of careful style definitions for non-Python tokens.
 
